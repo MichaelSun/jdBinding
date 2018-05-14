@@ -1,9 +1,7 @@
 {
   "count": 179,
-  "bindSuccess": 0,
+  "bindSuccess": 2,
   "unBindArray": [
-    "A757-4F15-7343-EF8D",
-    "BA65-5EE2-FC4F-1845",
     "C06B-A5DD-A6CF-A88F",
     "68D0-D6B3-9088-3765",
     "7064-B099-4C6D-6539",
@@ -182,6 +180,9 @@
     "95EC-27DD-921A-E0E9",
     "48C8-E84D-55BC-EC07"
   ],
-  "bindSuccessArray": [],
+  "bindSuccessArray": [
+    "A757-4F15-7343-EF8D",
+    "BA65-5EE2-FC4F-1845"
+  ],
   "bindFailedArray": []
 }
