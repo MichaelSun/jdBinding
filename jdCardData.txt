@@ -49,5 +49,6 @@
     "231A-6E77-1232-77CE",
     "42D5-70C4-FD65-2AF7"
   ],
-  "bindArray": []
+  "bindSuccessArray": [],
+  "bindFailedArray": []
 }

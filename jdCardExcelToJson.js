@@ -1,5 +1,6 @@
 var XLSX = require("xlsx")
 const workbook = XLSX.readFile('jdCardData.xlsx');
+var JDCardFile = './jdCardData.txt';
 
 
 function to_json(workbook) {
@@ -62,7 +63,8 @@ function JDCardClass() {
 	var count = 0;
 	var bindSuccess = 0;
 	var unBindArray = [];
-	var bindArray = [];
+	var bindSuccessArray = [];
+	var bindFailedArray = [];
 }
 
 function excelToJsonFile(workbook, filename) {
@@ -83,7 +85,8 @@ function excelToJsonFile(workbook, filename) {
 	jdCardClass.count = jdCardArray.length;
 	jdCardClass.bindSuccess = 0;
 	jdCardClass.unBindArray = jdCardArray;
-	jdCardClass.bindArray = [];
+	jdCardClass.bindSuccessArray = [];
+	jdCardClass.bindFailedArray = [];
 
 	saveDataToFile(filename, JSON.stringify(jdCardClass, 2, 2));
 
@@ -95,4 +98,4 @@ function excelToJsonFile(workbook, filename) {
 }
 
 //to_json(workbook);
-excelToJsonFile(workbook, './jdCardData.txt');
+excelToJsonFile(workbook, JDCardFile);

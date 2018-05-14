@@ -4,6 +4,7 @@
   "description": "",
   "main": "excelToJson.js",
   "dependencies": {
+    "log4js": "^2.6.0",
     "xlsx": "^0.12.12"
   },
   "devDependencies": {},
