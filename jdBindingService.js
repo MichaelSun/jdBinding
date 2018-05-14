@@ -30,6 +30,7 @@ module.exports = {
 	summary: 'Michael Sun 京东卡程序',
 
 	* beforeSendRequest(requestDetail) {
+		dumpInfo(requestDetail.url);
 		if (requestDetail.requestOptions.hostname == 'sgqjd') {
 			if (requestDetail.requestOptions.path.indexOf('getcard') != -1) {
 				var date = new Date();
@@ -88,7 +89,7 @@ module.exports = {
 						header: {
 							'content-type': 'text/html'
 						},
-						body: 'failed'
+						body: 'success'
 					}
 				};
 			}
@@ -180,7 +181,7 @@ function handleBindingSuccess(cardcode) {
 	jdCard.bindSuccessArray.push(cardcode);
 	jdCard.bindSuccess = jdCard.bindSuccess + 1;
 
-	saveDataToFile(JDCardFile, JSON.stringify(jdCardClass, 2, 2));
+	saveDataToFile(JDCardFile, JSON.stringify(jdCard, 2, 2));
 	logger.info('绑定京东卡 [[成功]]，并更新数据库成功，卡号 : ' + cardcode);
 }
 
@@ -216,7 +217,7 @@ function handleBindingFailed(cardcode) {
 	jdCard.unBindArray.remove(cardcode);
 	jdCard.bindFailedArray.push(cardcode);
 
-	saveDataToFile(JDCardFile, JSON.stringify(jdCardClass, 2, 2));
+	saveDataToFile(JDCardFile, JSON.stringify(jdCard, 2, 2));
 	logger.info('绑定京东卡 [[失败]]，并更新数据库成功，卡号 : ' + cardcode);
 }
 
