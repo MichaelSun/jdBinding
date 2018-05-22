@@ -30,8 +30,17 @@ module.exports = {
 	summary: 'Michael Sun 京东卡程序',
 
 	* beforeSendRequest(requestDetail) {
+		var wgetHostName = false;
 		dumpInfo(requestDetail.url);
-		if (requestDetail.requestOptions.hostname == 'sgqjd') {
+		dumpInfo(JSON.stringify(requestDetail.requestOptions, 2, 2));
+		if (requestDetail.requestOptions.headers['User-Agent'] == 'Wget') {
+			dumpInfo('Wget phone request, check path for Wget request');
+			if (requestDetail.requestOptions.path.indexOf('sgqjd') != -1) {
+				wgetHostName = true;
+			}
+		}
+
+		if (requestDetail.requestOptions.hostname == 'sgqjd' || wgetHostName == true) {
 			if (requestDetail.requestOptions.path.indexOf('getcard') != -1) {
 				var date = new Date();
 				dumpInfo('    ');
@@ -83,6 +92,18 @@ module.exports = {
 				dumpInfo('    ');
 
 
+				return {
+					response: {
+						statusCode: 200,
+						header: {
+							'content-type': 'text/html'
+						},
+						body: 'success'
+					}
+				};
+			} else if (requestDetail.requestOptions.path.indexOf('testCurl') != -1) {
+				dumpInfo(requestDetail.url);
+				dumpInfo("测试CURL网络通讯，CURL在移动端运行成功 >>>>>")
 				return {
 					response: {
 						statusCode: 200,
